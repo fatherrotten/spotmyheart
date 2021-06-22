@@ -1,9 +1,6 @@
 spot_playlist <- function() {
 
-  if (Sys.getenv("SPOTIFY_CLIENT_ID") == "") {
-    Sys.setenv(SPOTIFY_CLIENT_ID = "23286ab9a1204071b54ad1b8567451fb",
-               SPOTIFY_CLIENT_SECRET = "b5fda2113fed4a51a626cf828533e23b")
-  }
+
   smh_auth <- spotifyr::get_spotify_authorization_code()
   smh_token <- spotifyr::get_spotify_access_token()
   smh_play <- spotifyr::get_my_playlists()
@@ -32,7 +29,7 @@ spot_tracklist <- function(smh_playlist) {
   for (i in other_lang) {
     smh_tracklist$track[i] <-
       translateR::translate(content.vec = smh_tracklist$track[i],
-                            google.api.key = "AIzaSyCAlnuhcE38qMQpRI42MKd5NFrk23MCo0s",
+                            google.api.key = "#####",
                             source.lang = smh_lang[i], target.lang = "en")
   }
   options(warn = 0)
